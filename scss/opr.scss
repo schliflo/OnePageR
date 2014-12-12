@@ -1,0 +1,78 @@
+@import "compass/reset";
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700);
+
+$brand1: #11CC88;
+$brand2: #FFB242;
+$brand3: #418AD0;
+$brand4: #FF6342;
+$dark: #333;
+$light: #ddd;
+$transition: .3s ease-in-out;
+
+body{
+  background-color: $light;
+  font-family: 'Roboto Slab', serif;
+  color: $dark;
+}
+a{
+  text-decoration: none;
+  color: $dark;
+  display:block;
+}
+
+a:after{
+  content: '';
+  position:relative;
+  display: block;
+  width: 8px;
+  border-bottom: 2px solid $dark;
+  transition: $transition;
+}
+a:hover:after{
+  width: 100%;
+}
+#nav-main{
+  position: fixed;
+  right: 0;
+  z-index: 999;
+  padding: 20px;
+  margin: 20px;
+  border: 4px solid $dark;
+}
+#nav-main li{
+  float:left;
+}
+#nav-main li+li{
+  margin-left:20px;
+}
+.page{
+  position:fixed;
+  height: 100%;
+  width: 100%;
+}
+.first{
+  background-color: $brand1;
+  z-index: 100;
+}
+.second{
+  background-color: $brand2;
+  z-index: 90;
+}
+.third{
+  background-color: $brand3;
+  z-index: 80;
+}
+.fourth{
+  background-color: $brand4;
+  z-index: 70;
+}
+.next{
+  width:30px;
+  height:30px;
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  box-shadow: 4px 4px 0 $dark;
+  transform: translate(-50%, 0) rotate(45deg);
+  cursor: pointer;
+}
