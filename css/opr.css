@@ -121,30 +121,36 @@ a:hover:after {
 }
 
 /* line 53, ../scss/opr.scss */
-.first {
-  background-color: #11CC88;
+.current {
+  z-index: 99;
+}
+
+/* line 56, ../scss/opr.scss */
+.animateout {
   z-index: 100;
 }
 
-/* line 57, ../scss/opr.scss */
-.second {
-  background-color: #FFB242;
-  z-index: 90;
-}
-
-/* line 61, ../scss/opr.scss */
-.third {
-  background-color: #418AD0;
-  z-index: 80;
+/* line 62, ../scss/opr.scss */
+.first {
+  background-color: #11CC88;
 }
 
 /* line 65, ../scss/opr.scss */
-.fourth {
-  background-color: #FF6342;
-  z-index: 70;
+.second {
+  background-color: #FFB242;
 }
 
-/* line 69, ../scss/opr.scss */
+/* line 68, ../scss/opr.scss */
+.third {
+  background-color: #418AD0;
+}
+
+/* line 71, ../scss/opr.scss */
+.fourth {
+  background-color: #FF6342;
+}
+
+/* line 74, ../scss/opr.scss */
 .next {
   width: 30px;
   height: 30px;
