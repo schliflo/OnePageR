@@ -25,7 +25,7 @@
     }
 
     function oprNext() {
-        if (!animationRunning) {
+        if (!animationRunning) { // check if animation is running
             var slide = oprCur;
             if (oprHasNext(slide)) {
                 animationRunning = true;
@@ -44,7 +44,7 @@
     }
 
     function oprPrev() {
-        if (!animationRunning) {
+        if (!animationRunning) { // check if animation is running
             var slide = oprCur;
             if (oprHasPrev(slide)) {
                 animationRunning = true;
@@ -63,7 +63,7 @@
     }
 
     function oprID(pageID) {
-        if (!animationRunning) {
+        if (!animationRunning) { // check if animation is running
             var slide = oprCur;
             if (slide.data('target') != pageID && oprIDExists(pageID)) {
                 animationRunning = true;
@@ -116,6 +116,13 @@
     //****************************//
     // scroll events              //
     //****************************//
-    //TODO add scroll support
+    $(window).bind('mousewheel', function(event) { // handle scroll event
+        if (event.originalEvent.wheelDelta >= 0) { // determine scroll direction
+            oprPrev();
+        }
+        else {
+            oprNext();
+        }
+    });
 
 })(jQuery);
