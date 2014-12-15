@@ -2,39 +2,36 @@
 <html lang="de">
 <head>
     <title>OnePageR</title>
-    <link rel="stylesheet" href="css/opr.css" />
+    <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
 
 <nav id="nav-main">
-    <ul>
-        <li><a href="#1">first</a></li>
-        <li><a href="#2">second</a></li>
-        <li><a href="#3">third</a></li>
-        <li><a href="#4">fourth</a></li>
+    <ul class="opr-nav">
+        <li><a data-target="1">first</a></li>
+        <li><a data-target="2">second</a></li>
+        <li><a data-target="3">third</a></li>
+        <li><a data-target="4">fourth</a></li>
     </ul>
 </nav>
 
-<div>
-    <div class="page first current">
-        <div id="logo">
-            <span>&#x2B22;</span>
-        </div>
-        <div class="next"></div>
+<div class="opr-container">
+    <div class="opr-page opr-current first" data-target="1">
+        <div class="opr-next"></div>
     </div>
-    <div class="page second">
-        <div class="next"></div>
+    <div class="opr-page second" data-target="2">
+        <div class="opr-next"></div>
     </div>
-    <div class="page third">
-        <div class="next"></div>
+    <div class="opr-page third" data-target="3">
+        <div class="opr-next"></div>
     </div>
-    <div class="page fourth">
+    <div class="opr-page fourth" data-target="4">
         <p>&nbsp;</p>
     </div>
 </div>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="js/opr.js" ></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="js/opr.js"></script>
 
 </body>
 </html>

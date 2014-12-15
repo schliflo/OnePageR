@@ -1,5 +1,6 @@
 @import "compass/reset";
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700);
+@import "opr";
 
 $brand1: #11CC88;
 $brand2: #FFB242;
@@ -45,20 +46,6 @@ a:hover:after{
 #nav-main li+li{
   margin-left:20px;
 }
-.page{
-  position:fixed;
-  height: 100%;
-  width: 100%;
-}
-.current{
-  z-index: 99;
-}
-.animateout{
-  z-index:100;
-}
-.animatein{
-
-}
 .first{
   background-color: $brand1;
 }
@@ -71,7 +58,8 @@ a:hover:after{
 .fourth{
   background-color: $brand4;
 }
-.next{
+
+.opr-next{
   width:30px;
   height:30px;
   position: fixed;

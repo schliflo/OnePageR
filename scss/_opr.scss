@@ -1,0 +1,14 @@
+.opr-page{
+  position:fixed;
+  height: 100%;
+  width: 100%;
+}
+.opr-current{
+  z-index: 99;
+}
+.opr-animate{
+  z-index:100;
+}
+.opr-nav a[data-target], .opr-next, .opr-prev{
+  cursor: pointer;
+}

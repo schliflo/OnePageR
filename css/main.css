@@ -64,21 +64,43 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 12, ../scss/opr.scss */
+/* line 1, ../scss/_opr.scss */
+.opr-page {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 6, ../scss/_opr.scss */
+.opr-current {
+  z-index: 99;
+}
+
+/* line 9, ../scss/_opr.scss */
+.opr-animate {
+  z-index: 100;
+}
+
+/* line 12, ../scss/_opr.scss */
+.opr-nav a[data-target], .opr-next, .opr-prev {
+  cursor: pointer;
+}
+
+/* line 13, ../scss/main.scss */
 body {
   background-color: #ddd;
   font-family: 'Roboto Slab', serif;
   color: #333;
 }
 
-/* line 17, ../scss/opr.scss */
+/* line 18, ../scss/main.scss */
 a {
   text-decoration: none;
   color: #333;
   display: block;
 }
 
-/* line 23, ../scss/opr.scss */
+/* line 24, ../scss/main.scss */
 a:after {
   content: '';
   position: relative;
@@ -88,12 +110,12 @@ a:after {
   transition: 0.3s ease-in-out;
 }
 
-/* line 31, ../scss/opr.scss */
+/* line 32, ../scss/main.scss */
 a:hover:after {
   width: 100%;
 }
 
-/* line 34, ../scss/opr.scss */
+/* line 35, ../scss/main.scss */
 #nav-main {
   position: fixed;
   right: 0;
@@ -103,55 +125,38 @@ a:hover:after {
   border: 4px solid #333;
 }
 
-/* line 42, ../scss/opr.scss */
+/* line 43, ../scss/main.scss */
 #nav-main li {
   float: left;
 }
 
-/* line 45, ../scss/opr.scss */
+/* line 46, ../scss/main.scss */
 #nav-main li + li {
   margin-left: 20px;
 }
 
-/* line 48, ../scss/opr.scss */
-.page {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-}
-
-/* line 53, ../scss/opr.scss */
-.current {
-  z-index: 99;
-}
-
-/* line 56, ../scss/opr.scss */
-.animateout {
-  z-index: 100;
-}
-
-/* line 62, ../scss/opr.scss */
+/* line 49, ../scss/main.scss */
 .first {
   background-color: #11CC88;
 }
 
-/* line 65, ../scss/opr.scss */
+/* line 52, ../scss/main.scss */
 .second {
   background-color: #FFB242;
 }
 
-/* line 68, ../scss/opr.scss */
+/* line 55, ../scss/main.scss */
 .third {
   background-color: #418AD0;
 }
 
-/* line 71, ../scss/opr.scss */
+/* line 58, ../scss/main.scss */
 .fourth {
   background-color: #FF6342;
 }
 
-/* line 74, ../scss/opr.scss */
-.next {
+/* line 62, ../scss/main.scss */
+.opr-next {
   width: 30px;
   height: 30px;
   position: fixed;
