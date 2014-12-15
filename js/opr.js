@@ -116,12 +116,22 @@
     //****************************//
     // scroll events              //
     //****************************//
-    $(window).bind('mousewheel', function(event) { // handle scroll event
+    $(window).bind('mousewheel', function (event) { // handle scroll event
         if (event.originalEvent.wheelDelta >= 0) { // determine scroll direction
             oprPrev();
         }
         else {
             oprNext();
+        }
+    });
+
+    $(window).swipe({
+        //Generic swipe handler for all directions
+        swipeUp: function () { // swipe up
+            oprNext();
+        },
+        swipeDown: function () { // swipe down
+            oprPrev();
         }
     });
 
