@@ -1,12 +1,11 @@
-( function($) {
+(function ($) {
 
     var oprCur = $('.opr-current'); // always stores the current active slide
 
-    function opr_next() {
+    function oprNext() {
         var slide = oprCur;
-        var next = slide.next('.opr-page');
-        //TODO check if has next
-        if (true) {
+        if (oprHasNext(slide)) {
+            var next = slide.next('.opr-page');
             slide.addClass('opr-animate'); // put slide in front (z-index :100)
             slide.removeClass('opr-current'); // remove current status from old slide
             next.addClass('opr-current'); // add current status to new slide
@@ -17,11 +16,11 @@
             oprCur = next; // set current slide
         }
     }
-    function opr_prev() {
+
+    function oprPrev() {
         var slide = oprCur;
-        var prev = slide.prev('.opr-page');
-        //TODO check if has previous
-        if (true) {
+        if (oprHasPrev(slide)) {
+            var prev = slide.prev('.opr-page');
             prev.hide(); // hide prev slide before slideDown()
             prev.addClass('opr-animate'); // put slide in front (z-index :100)
             prev.slideDown(function () {
@@ -32,11 +31,11 @@
             oprCur = prev; // set current slide
         }
     }
-    function opr_id(pageID) {
+
+    function oprID(pageID) {
         var slide = oprCur;
-        var page = $('.opr-page:nth-child(' + pageID + ')');
-        //TODO check if id exists
-        if (slide.data('target') != pageID) {
+        if (slide.data('target') != pageID && oprIDExists(pageID)) {
+            var page = $('.opr-page[data-target="' + pageID + '"]');
             page.hide(); // hide new slide before slideDown()
             page.addClass('opr-animate'); // put slide in front (z-index :100)
             page.slideDown(function () {
@@ -48,18 +47,40 @@
         }
     }
 
+    function oprHasNext(slide) {
+        if (slide.next().is('.opr-page')) {
+            return true;
+        }
+        return false;
+    }
+
+    function oprHasPrev(slide) {
+        if (slide.prev().is('.opr-page')) {
+            return true;
+        }
+        return false;
+    }
+
+    function oprIDExists(pageID) {
+        if ($('.opr-page[data-target="' + pageID + '"]').length > 0) {
+            return true;
+        }
+        return false;
+    }
+
+
     //****************************//
     // click events               //
     //****************************//
     $('.opr-next').on('click', function () { // handles next button
-        opr_next();
+        oprNext();
     });
     $('.opr-prev').on('click', function () { // handles prev button
-        opr_prev();
+        oprPrev();
     });
     $('.opr-nav').on('click', 'a', function () { // handles menu navigation
         var pageID = $(this).data('target');
-        opr_id(pageID);
+        oprID(pageID);
     });
 
     //****************************//
@@ -68,10 +89,10 @@
     $(document).keydown(function (e) {
         switch (e.which) {
             case 38: // up
-                opr_prev();
+                oprPrev();
                 break;
             case 40: // down
-                opr_next();
+                oprNext();
                 break;
 
             default:
