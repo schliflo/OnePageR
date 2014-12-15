@@ -1,73 +1,85 @@
 (function ($) {
 
     var oprCur = $('.opr-current'); // always stores the current active slide
+    var animationRunning = false;
 
-    function oprNext() {
-        var slide = oprCur;
-        if (oprHasNext(slide)) {
-            var next = slide.next('.opr-page');
-            slide.addClass('opr-animate'); // put slide in front (z-index :100)
-            slide.removeClass('opr-current'); // remove current status from old slide
-            next.addClass('opr-current'); // add current status to new slide
-            slide.slideUp(function () {
-                slide.removeClass('opr-animate');
-                slide.show(); // make old slide visible again, as slideUp() adds display:none
-            });
-            oprCur = next; // set current slide
-        }
-    }
-
-    function oprPrev() {
-        var slide = oprCur;
-        if (oprHasPrev(slide)) {
-            var prev = slide.prev('.opr-page');
-            prev.hide(); // hide prev slide before slideDown()
-            prev.addClass('opr-animate'); // put slide in front (z-index :100)
-            prev.slideDown(function () {
-                slide.removeClass('opr-current'); // remove current status from old slide
-                prev.removeClass('opr-animate');
-                prev.addClass('opr-current'); // add current status to new slide
-            });
-            oprCur = prev; // set current slide
-        }
-    }
-
-    function oprID(pageID) {
-        var slide = oprCur;
-        if (slide.data('target') != pageID && oprIDExists(pageID)) {
-            var page = $('.opr-page[data-target="' + pageID + '"]');
-            page.hide(); // hide new slide before slideDown()
-            page.addClass('opr-animate'); // put slide in front (z-index :100)
-            page.slideDown(function () {
-                slide.removeClass('opr-current'); // remove current status from old slide
-                page.removeClass('opr-animate');
-                page.addClass('opr-current'); // add current status to new slide
-            });
-            oprCur = page; // set current slide
-        }
-    }
-
-    function oprHasNext(slide) {
+    function oprHasNext(slide) { // check if slide has valid next
         if (slide.next().is('.opr-page')) {
             return true;
         }
         return false;
     }
 
-    function oprHasPrev(slide) {
+    function oprHasPrev(slide) { // check if slide has valid prev
         if (slide.prev().is('.opr-page')) {
             return true;
         }
         return false;
     }
 
-    function oprIDExists(pageID) {
+    function oprIDExists(pageID) { // check if pageID exists
         if ($('.opr-page[data-target="' + pageID + '"]').length > 0) {
             return true;
         }
         return false;
     }
 
+    function oprNext() {
+        if (!animationRunning) {
+            var slide = oprCur;
+            if (oprHasNext(slide)) {
+                animationRunning = true;
+                var next = slide.next('.opr-page');
+                slide.addClass('opr-animate'); // put slide in front (z-index :100)
+                slide.removeClass('opr-current'); // remove current status from old slide
+                next.addClass('opr-current'); // add current status to new slide
+                slide.slideUp(function () {
+                    slide.removeClass('opr-animate');
+                    slide.show(); // make old slide visible again, as slideUp() adds display:none
+                    animationRunning = false;
+                });
+                oprCur = next; // set current slide
+            }
+        }
+    }
+
+    function oprPrev() {
+        if (!animationRunning) {
+            var slide = oprCur;
+            if (oprHasPrev(slide)) {
+                animationRunning = true;
+                var prev = slide.prev('.opr-page');
+                prev.hide(); // hide prev slide before slideDown()
+                prev.addClass('opr-animate'); // put slide in front (z-index :100)
+                prev.slideDown(function () {
+                    slide.removeClass('opr-current'); // remove current status from old slide
+                    prev.removeClass('opr-animate');
+                    prev.addClass('opr-current'); // add current status to new slide
+                    animationRunning = false;
+                });
+                oprCur = prev; // set current slide
+            }
+        }
+    }
+
+    function oprID(pageID) {
+        if (!animationRunning) {
+            var slide = oprCur;
+            if (slide.data('target') != pageID && oprIDExists(pageID)) {
+                animationRunning = true;
+                var page = $('.opr-page[data-target="' + pageID + '"]');
+                page.hide(); // hide new slide before slideDown()
+                page.addClass('opr-animate'); // put slide in front (z-index :100)
+                page.slideDown(function () {
+                    slide.removeClass('opr-current'); // remove current status from old slide
+                    page.removeClass('opr-animate');
+                    page.addClass('opr-current'); // add current status to new slide
+                    animationRunning = false;
+                });
+                oprCur = page; // set current slide
+            }
+        }
+    }
 
     //****************************//
     // click events               //
