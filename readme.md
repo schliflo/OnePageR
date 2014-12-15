@@ -1,6 +1,7 @@
 # OnePageR
 
 A minimalistic single page slides template based on jQuery
+
 [view the demo](http://schliflo.github.io/OnePageR/)
 
 
