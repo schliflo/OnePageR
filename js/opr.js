@@ -116,11 +116,13 @@
     //****************************//
     // scroll events              //
     //****************************//
-    $(window).bind('mousewheel', function (event) { // handle scroll event
-        if (event.originalEvent.wheelDelta >= 0) { // determine scroll direction
+    var minScrollWidth = 25;
+    $(window).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function (event) { // handle scroll event
+        var delta = parseInt(event.originalEvent.wheelDelta || -event.originalEvent.detail);
+        if (delta >= minScrollWidth) { // determine scroll direction
             oprPrev();
         }
-        else {
+        if (delta <= -minScrollWidth) {
             oprNext();
         }
     });
